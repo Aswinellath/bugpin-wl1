@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<link rel="stylesheet" href="modal.css"/>
+</head>
+<body>
+
+<!-- FORM VIEW -->
+<div class="bp-view" id="view-form">
+  <div class="mh">
+    <div class="mh-left">
+      <span class="drag-handle">⠿</span>
+      <span class="mh-domain" id="form-domain">project</span>
+      <span class="mh-sep">›</span>
+      <span class="mh-page" id="form-page">page</span>
+    </div>
+    <button class="x-btn" id="form-close">✕</button>
+  </div>
+  <div class="mb">
+    <div class="mb-left">
+      <textarea id="f-desc" placeholder="Add description…" maxlength="2000"></textarea>
+      <div class="char-row"><span id="f-char">0</span> / 2000</div>
+      <div class="ss-row">
+        <div class="ss-box" id="ss-box">
+          <span id="ss-label">⏳ Capturing…</span>
+          <img id="ss-img" hidden/>
+          <button class="ss-del" id="ss-del" hidden title="Remove">✕</button>
+        </div>
+        <div class="ss-btns" id="ss-btns" hidden>
+          <button class="btn-ann" id="btn-ann">✏️ Annotate</button>
+          <button class="btn-crop" id="btn-crop">✂️ Crop</button>
+        </div>
+      </div>
+    </div>
+    <div class="mb-right">
+      <input class="rf" id="f-assignee" placeholder="Assignee(s)"/>
+      <select class="rf" id="f-severity">
+        <option value="" disabled selected>Severity</option>
+        <option value="critical">🔴 Critical</option>
+        <option value="high">🟠 High</option>
+        <option value="medium">🔵 Medium</option>
+        <option value="low">🟢 Low</option>
+      </select>
+      <select class="rf" id="f-status">
+        <option value="backlog" selected>Backlog</option>
+        <option value="todo">To Do</option>
+        <option value="in-progress">In Progress</option>
+        <option value="done">Done</option>
+      </select>
+      <input class="rf" id="f-tags" placeholder="Tags (comma separated)"/>
+      <label class="keep-lbl"><input type="checkbox" id="f-keep"/> Keep these settings</label>
+    </div>
+  </div>
+  <div class="mf">
+    <div class="mf-l">
+      <span class="mf-hint" id="mf-hint">📌 Click on the page to pin a bug</span>
+    </div>
+    <div class="mf-r">
+      <button class="btn-cancel" id="btn-cancel">Cancel</button>
+      <button class="btn-create" id="btn-create">Create task</button>
+    </div>
+  </div>
+</div>
+
+<!-- ANNOTATOR VIEW (full-screen inside modal) -->
+<div class="bp-view hidden" id="view-annotator">
+  <iframe id="ann-frame" src="" style="width:100%;flex:1;border:none;display:block;"></iframe>
+</div>
+
+<!-- DETAIL VIEW -->
+<div class="bp-view hidden" id="view-detail">
+  <div class="mh">
+    <div class="mh-left">
+      <span class="drag-handle">⠿</span>
+      <span class="detail-badge" id="d-badge">#1</span>
+      <span class="mh-title" id="d-title">Bug title</span>
+    </div>
+    <button class="x-btn" id="detail-close">✕</button>
+  </div>
+  <div class="mb">
+    <div class="mb-left">
+      <div class="d-desc" id="d-desc"></div>
+      <div id="d-ss"></div>
+      <div class="comments" id="comments">
+        <div class="comments-head">💬 Comments <span id="c-count"></span></div>
+        <div class="comments-list" id="c-list"></div>
+        <div class="comments-name" id="c-name-box" hidden>
+          <input class="c-name-input" id="c-name-input" placeholder="Your name" maxlength="40"/>
+          <button class="c-name-save" id="c-name-save">Save</button>
+        </div>
+        <div class="comments-add" id="c-add-box" hidden>
+          <textarea class="c-input" id="c-input" placeholder="Add a comment…" rows="2"></textarea>
+          <button class="c-post" id="c-post">Post</button>
+        </div>
+      </div>
+    </div>
+    <div class="mb-right" id="d-meta"></div>
+  </div>
+  <div class="mf">
+    <div class="mf-l"><button class="btn-del" id="btn-del">🗑 Delete</button></div>
+    <div class="mf-r">
+      <button class="btn-cancel" id="d-close">Close</button>
+      <button class="btn-create" id="btn-edit">✏️ Edit</button>
+    </div>
+  </div>
+</div>
+
+<script src="modal.js"></script>
+</body>
+</html>

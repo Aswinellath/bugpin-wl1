@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<link rel="stylesheet" href="sidebar.css"/>
+</head>
+<body>
+<div id="app">
+
+  <!-- Header -->
+  <div class="sh">
+    <div class="sh-project">
+      <span class="sh-icon">📌</span>
+      <div>
+        <div class="sh-domain" id="sh-domain">Loading…</div>
+        <div class="sh-sub">Current Project</div>
+      </div>
+    </div>
+    <button class="x-btn" id="sh-close">✕</button>
+  </div>
+
+  <!-- Toolbar -->
+  <div class="stb">
+    <input class="stb-search" id="stb-search" placeholder="🔍 Search bugs…"/>
+    <select class="stb-filter" id="stb-sev">
+      <option value="">All severities</option>
+      <option value="critical">🔴 Critical</option>
+      <option value="high">🟠 High</option>
+      <option value="medium">🔵 Medium</option>
+      <option value="low">🟢 Low</option>
+    </select>
+  </div>
+
+  <!-- Open the full-page issue list in its own tab -->
+  <button class="viewall" id="view-all" title="Open every issue in a full-size tab">
+    <span>⤢ View all issues</span><span class="viewall-count" id="viewall-count">0</span>
+  </button>
+
+  <!-- Viewport readout + show-all-sizes toggle -->
+  <div class="viewport-bar" id="viewport-bar"></div>
+
+  <!-- Tree: pages → bugs -->
+  <div class="stree" id="stree"></div>
+
+  <!-- Live session panel -->
+  <div class="live" id="live">
+    <button class="share-head" id="live-toggle">
+      <span>🔴 Live session</span>
+      <span class="share-chev" id="live-chev">›</span>
+    </button>
+    <div class="share-body" id="live-body" hidden>
+      <div class="live-status" id="live-status">Not connected</div>
+      <div id="live-idle">
+        <button class="sfbtn" id="live-start">▶ Start session (host)</button>
+        <div class="share-div"></div>
+        <div class="live-join-row">
+          <input class="ninput" id="live-code" placeholder="paste session code"/>
+          <button class="sfbtn" id="live-join">Join</button>
+        </div>
+      </div>
+      <div id="live-active" hidden>
+        <div class="live-code-box">
+          <span class="live-code-label">Share this code:</span>
+          <code class="live-code" id="live-code-out">—</code>
+          <button class="live-copy" id="live-copy" title="Copy">⧉</button>
+        </div>
+        <button class="sfbtn live-leave" id="live-leave">■ Leave session</button>
+      </div>
+      <p class="share-note">Live sharing is peer-to-peer. Both people must stay on this page. If a direct connection fails, export the list as a document instead.</p>
+    </div>
+  </div>
+
+  <div class="share" id="share">
+    <button class="share-head" id="share-toggle">
+      <span>Export &amp; clear</span>
+      <span class="share-chev" id="share-chev">›</span>
+    </button>
+    <div class="share-body" id="share-body" hidden>
+      <div class="share-row">
+        <span class="share-lbl">Scope</span>
+        <div class="seg">
+          <button class="seg-btn active" id="scope-page" data-scope="page">This page</button>
+          <button class="seg-btn" id="scope-site" data-scope="site">Whole site</button>
+        </div>
+      </div>
+      <label class="share-check">
+        <input type="checkbox" id="inc-shots" checked/>
+        Include screenshots
+      </label>
+      <button class="sfbtn" id="sf-doc">📄 Export as document</button>
+      <p class="share-note" id="share-note">The document covers the chosen scope above.</p>
+      <div class="share-div"></div>
+      <button class="sfbtn danger" id="sf-clear">🗑 Clear all bugs</button>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="sfooter">
+    <button class="sfbtn primary" id="sf-mode">✚ Report Bug</button>
+  </div>
+</div>
+<script src="sidebar.js"></script>
+</body>
+</html>

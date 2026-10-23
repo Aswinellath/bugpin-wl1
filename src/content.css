@@ -1,0 +1,242 @@
+/* ============================================================
+   BugPin v6 — Content Styles
+   ============================================================ */
+
+/* ── Sidebar tab on right edge ── */
+#bp-tab {
+  position: fixed;
+  right: 0; top: 50%;
+  transform: translateY(-50%);
+  width: 34px;
+  background: #1a56db;
+  border-radius: 8px 0 0 8px;
+  z-index: 2147483600;
+  display: flex; flex-direction: column;
+  align-items: center; padding: 12px 0; gap: 14px;
+  box-shadow: -2px 0 12px rgba(0,0,0,.18);
+  transition: background .2s;
+}
+#bp-tab.mode-active { background: #dc2626; }
+#bp-tab .bp-tab-btn {
+  background: none; border: none; cursor: pointer;
+  color: #fff; font-size: 15px; line-height: 1;
+  padding: 0; width: 100%;
+  display: flex; align-items: center; justify-content: center;
+}
+#bp-tab .bp-tab-btn:hover { opacity: .75; }
+#bp-tab #bp-mode-btn {
+  font-size: 14px; height: 26px; border-radius: 6px;
+  background: rgba(255,255,255,.18);
+}
+#bp-tab.mode-active #bp-mode-btn { background: rgba(255,255,255,.3); }
+#bp-tab-count {
+  background: rgba(255,255,255,.25);
+  color: #fff; font-size: 10px; font-weight: 700;
+  border-radius: 99px; min-width: 18px; height: 18px;
+  display: flex; align-items: center; justify-content: center;
+  padding: 0 4px; font-family: -apple-system,sans-serif;
+}
+
+/* ── Sidebar iframe ── */
+#bp-sidebar {
+  position: fixed; top: 0; right: 0;
+  width: 340px; max-width: 100vw; height: 100vh; height: 100dvh;
+  border: none; z-index: 2147483601;
+  box-shadow: -4px 0 24px rgba(0,0,0,.18);
+  transition: transform .25s cubic-bezier(.4,0,.2,1);
+  background: #fff;
+}
+#bp-sidebar.bp-hide { transform: translateX(100%); }
+
+/* ── Bug form modal overlay ── */
+#bp-modal-bg {
+  position: fixed; inset: 0;
+  background: rgba(10,10,25,.55);
+  backdrop-filter: blur(2px);
+  z-index: 2147483610;
+  display: flex; align-items: center; justify-content: center;
+}
+#bp-modal-bg.bp-hide { display: none; }
+#bp-modal {
+  width: 800px; max-width: calc(100vw - 32px);
+  height: 430px; max-height: calc(100vh - 24px); border: none;
+  border-radius: 12px;
+  box-shadow: 0 24px 64px rgba(0,0,0,.32);
+}
+
+/* ── Bug pins ── */
+.bp-pin {
+  position: absolute;
+  width: 26px; height: 26px;
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg) translate(-50%,-50%);
+  transform-origin: 0 0;
+  border: 2px solid #fff;
+  cursor: pointer;
+  z-index: 2147483590;
+  box-shadow: 0 2px 8px rgba(0,0,0,.25);
+  display: flex; align-items: center; justify-content: center;
+  transition: box-shadow .15s, transform .15s;
+}
+.bp-pin:hover {
+  box-shadow: 0 4px 16px rgba(0,0,0,.35);
+  transform: rotate(-45deg) translate(-50%,-50%) scale(1.15);
+}
+.bp-pin span {
+  transform: rotate(45deg);
+  color: #fff; font-size: 9px; font-weight: 800;
+  font-family: -apple-system,sans-serif; pointer-events: none;
+}
+.bp-pin.sev-critical { background: #dc2626; }
+.bp-pin.sev-high     { background: #ea580c; }
+.bp-pin.sev-medium   { background: #1a56db; }
+.bp-pin.sev-low      { background: #16a34a; }
+
+/* ── Crosshair mode ── */
+body.bp-mode *:not(#bp-ann-overlay):not(#bp-ann-canvas):not([id^="bp-"]) { cursor: crosshair !important; }
+/* Annotation overlay controls its own cursor */
+#bp-ann-overlay, #bp-ann-canvas { cursor: crosshair; }
+body.bp-mode #bp-ann-canvas { cursor: crosshair !important; }
+
+/* ── ANNOTATION OVERLAY ── */
+#bp-ann-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483620;
+  pointer-events: none;
+}
+#bp-ann-overlay.active {
+  pointer-events: auto;
+}
+
+/* Canvas fills the whole viewport */
+#bp-ann-canvas {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  display: block;
+}
+
+/* ── Annotation toolbar — floating top bar ── */
+#bp-ann-toolbar {
+  position: fixed;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2147483645;
+  background: #1a1a2e;
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0,0,0,.45);
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: -apple-system, 'Inter', sans-serif;
+  user-select: none;
+  flex-wrap: nowrap;
+}
+
+.bp-tb-tools, .bp-tb-actions { display: flex; align-items: center; gap: 6px; }
+#bp-ann-toolbar .bp-tb-toggle { display: none; }
+
+.bp-tb-sep {
+  width: 1px; height: 22px;
+  background: rgba(255,255,255,.12);
+  margin: 0 2px;
+  flex-shrink: 0;
+}
+
+.bp-tb-btn {
+  display: flex; align-items: center; gap: 5px;
+  padding: 5px 10px; border-radius: 7px; border: none;
+  background: rgba(255,255,255,.07); color: #e2e8f0;
+  font-size: 11px; font-weight: 600; cursor: pointer;
+  transition: all .15s; white-space: nowrap;
+  font-family: inherit;
+}
+.bp-tb-btn:hover   { background: rgba(255,255,255,.14); }
+.bp-tb-btn.active  { background: rgba(99,102,241,.75); color: #fff; }
+.bp-tb-btn.bp-confirm {
+  background: #16a34a; color: #fff;
+  padding: 5px 14px;
+}
+.bp-tb-btn.bp-confirm:hover { background: #15803d; }
+.bp-tb-btn.bp-cancel-ann {
+  background: rgba(239,68,68,.15);
+  color: #fca5a5; border: 1px solid rgba(239,68,68,.25);
+}
+.bp-tb-btn.bp-cancel-ann:hover { background: rgba(239,68,68,.25); }
+
+/* Color swatches */
+.bp-color {
+  width: 18px; height: 18px; border-radius: 50%;
+  cursor: pointer; border: 2px solid transparent;
+  transition: all .15s; flex-shrink: 0;
+}
+.bp-color:hover   { transform: scale(1.2); }
+.bp-color.active  { border-color: #fff; transform: scale(1.15); }
+
+/* Stroke slider */
+.bp-stroke-wrap { display: flex; align-items: center; gap: 6px; }
+.bp-stroke-wrap input[type=range] {
+  width: 64px; -webkit-appearance: none; height: 3px;
+  background: rgba(255,255,255,.2); border-radius: 99px; outline: none;
+}
+.bp-stroke-wrap input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none; width: 12px; height: 12px;
+  border-radius: 50%; background: #6366f1; cursor: pointer;
+}
+.bp-stroke-lbl { font-size: 10px; color: #94a3b8; width: 16px; font-family: monospace; }
+
+/* crop selection drawn directly on canvas */
+
+
+/* ============================================================
+   Responsive — narrow windows, phones in device mode, tablets
+   ============================================================ */
+
+/* Annotation toolbar: below ~920px it folds into a compact bar with a
+   "Tools" button; Done / Cancel stay visible, everything else opens on tap. */
+@media (max-width: 920px) {
+  #bp-ann-toolbar {
+    left: 8px; right: 8px; top: 8px;
+    transform: none;
+    flex-wrap: wrap;
+    padding: 6px 8px;
+    max-height: calc(100vh - 16px);
+    overflow-y: auto;
+  }
+  #bp-ann-toolbar .bp-tb-toggle { display: flex; }
+  .bp-tb-actions { margin-left: auto; }
+  .bp-tb-actions .bp-tb-sep { display: none; }
+  .bp-tb-tools {
+    display: none;
+    order: 3;
+    width: 100%;
+    flex-wrap: wrap;
+    padding-top: 6px;
+    border-top: 1px solid rgba(255,255,255,.12);
+    row-gap: 8px;
+  }
+  #bp-ann-toolbar.open .bp-tb-tools { display: flex; }
+  .bp-tb-btn { padding: 8px 12px; font-size: 12px; min-height: 34px; }
+  .bp-color { width: 26px; height: 26px; }
+  .bp-stroke-wrap input[type=range] { width: 90px; }
+}
+
+/* Small screens: the bug form takes the whole window and the sidebar
+   never exceeds it. */
+@media (max-width: 640px) {
+  #bp-modal-bg { align-items: stretch; justify-content: stretch; }
+  #bp-modal {
+    width: 100vw; max-width: 100vw;
+    height: 100vh; height: 100dvh; max-height: none;
+    border-radius: 0;
+  }
+  #bp-sidebar { width: 100vw; }
+  #bp-tab { width: 38px; }
+}
+@media (pointer: coarse) {
+  .bp-pin { width: 30px; height: 30px; }
+}

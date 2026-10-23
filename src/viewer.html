@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>BugPin — All issues</title>
+<link rel="stylesheet" href="viewer.css"/>
+</head>
+<body>
+<header class="top">
+  <div class="brand"><span class="pin"></span> BugPin</div>
+  <select id="v-domain" class="ctl" title="Project"></select>
+  <div class="live-dot" title="This list updates by itself when bugs change">● live</div>
+  <div class="spacer"></div>
+  <div class="summary" id="v-summary"></div>
+</header>
+
+<div class="filters">
+  <input id="v-search" class="ctl grow" placeholder="🔍 Search title, description, assignee, tags, comments…"/>
+  <select id="v-sev" class="ctl">
+    <option value="">All severities</option>
+    <option value="critical">🔴 Critical</option>
+    <option value="high">🟠 High</option>
+    <option value="medium">🔵 Medium</option>
+    <option value="low">🟢 Low</option>
+  </select>
+  <select id="v-status" class="ctl">
+    <option value="">All statuses</option>
+    <option value="backlog">Backlog</option>
+    <option value="todo">To Do</option>
+    <option value="in-progress">In Progress</option>
+    <option value="done">Done</option>
+  </select>
+  <select id="v-page" class="ctl"><option value="">All pages</option></select>
+  <select id="v-sort" class="ctl">
+    <option value="page">Group by page</option>
+    <option value="newest">Newest first</option>
+    <option value="severity">Most severe first</option>
+  </select>
+</div>
+
+<main id="v-list"></main>
+
+<div class="lightbox" id="v-lightbox" hidden><img id="v-lightbox-img" alt=""/></div>
+<script src="viewer.js"></script>
+</body>
+</html>

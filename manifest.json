@@ -1,0 +1,61 @@
+{
+  "manifest_version": 3,
+  "name": "BugPin WL1 \u2014 Live",
+  "version": "1.5.0",
+  "description": "BugPin with live peer-to-peer sharing. Mark bugs and a connected teammate sees them in real time \u2014 no server, no cost.",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "storage",
+    "tabs"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "src/background.js"
+  },
+  "action": {
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "src/peerjs.min.js",
+        "src/content.js"
+      ],
+      "css": [
+        "src/content.css"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "src/sidebar.html",
+        "src/sidebar.css",
+        "src/sidebar.js",
+        "src/modal.html",
+        "src/modal.css",
+        "src/modal.js",
+        "icons/*"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
+    }
+  ],
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}
