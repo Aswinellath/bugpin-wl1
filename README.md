@@ -6,6 +6,35 @@ Click any element on a page to pin a bug to it, describe it, attach an annotated
 
 > Current version: **1.5.0**
 
+---
+## Table of contents
+
+- [Screenshots](#screenshots)
+- [Features](#features)
+- [Install](#install)
+- [Quick start](#quick-start)
+- [How it works](#how-it-works)
+  - [Activating BugPin](#activating-bugpin)
+  - [Reporting a bug](#reporting-a-bug)
+  - [Annotating the screenshot](#annotating-the-screenshot)
+  - [Pins and screen sizes](#pins-and-screen-sizes)
+  - [The sidebar](#the-sidebar)
+  - [Bug details and comments](#bug-details-and-comments)
+  - [View all issues](#view-all-issues)
+  - [Live sessions](#live-sessions)
+  - [Export as document](#export-as-document)
+  - [Clear all bugs](#clear-all-bugs)
+- [Responsive and touch support](#responsive-and-touch-support)
+- [Privacy and data](#privacy-and-data)
+- [Permissions](#permissions)
+- [Limitations](#limitations)
+- [Troubleshooting](#troubleshooting)
+- [Project structure](#project-structure)
+- [Changelog](#changelog)
+- [License](#license)
+
+---
+
 ## Screenshots
 
 *Shown on a demo page with sample bugs.*
@@ -34,33 +63,6 @@ Click any element on a page to pin a bug to it, describe it, attach an annotated
   <img src="docs/screenshots/mobile-annotate.png" alt="Annotation tools folded into a compact bar on a phone-width window" width="260">
 </p>
 
----
-
-## Table of contents
-
-- [Screenshots](#screenshots)
-- [Features](#features)
-- [Install](#install)
-- [Quick start](#quick-start)
-- [How it works](#how-it-works)
-  - [Activating BugPin](#activating-bugpin)
-  - [Reporting a bug](#reporting-a-bug)
-  - [Annotating the screenshot](#annotating-the-screenshot)
-  - [Pins and screen sizes](#pins-and-screen-sizes)
-  - [The sidebar](#the-sidebar)
-  - [Bug details and comments](#bug-details-and-comments)
-  - [View all issues](#view-all-issues)
-  - [Live sessions](#live-sessions)
-  - [Export as document](#export-as-document)
-  - [Clear all bugs](#clear-all-bugs)
-- [Responsive and touch support](#responsive-and-touch-support)
-- [Privacy and data](#privacy-and-data)
-- [Permissions](#permissions)
-- [Limitations](#limitations)
-- [Troubleshooting](#troubleshooting)
-- [Project structure](#project-structure)
-- [Changelog](#changelog)
-- [License](#license)
 
 ---
 
